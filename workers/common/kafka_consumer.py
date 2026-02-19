@@ -4,6 +4,7 @@ from confluent_kafka import Consumer, KafkaError, KafkaException
 import json
 import logging
 import os
+import time
 from typing import Callable, List
 
 logger = logging.getLogger(__name__)
@@ -35,6 +36,10 @@ def run_consumer(consumer: Consumer, handler: Callable[[dict], None], worker_nam
             if msg is None:
                 continue
             if msg.error():
+                if msg.error().code() == KafkaError.UNKNOWN_TOPIC_OR_PART:
+                    logger.warning(f"[{worker_name}] Topic not found, waiting for topics to be created...")
+                    time.sleep(5)
+                    continue
                 if msg.error().code() == KafkaError._PARTITION_EOF:
                     logger.debug(f"Reached end of partition: {msg.topic()}[{msg.partition()}]")
                 else:

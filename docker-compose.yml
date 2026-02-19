@@ -140,6 +140,8 @@ services:
       - kafka
     networks:
       - backend
+    volumes:
+      - ./workers/common:/app/common
     restart: on-failure
 
   # ─── Payment Processor Worker ─────────────────────────────────────
@@ -156,6 +158,8 @@ services:
       - kafka
     networks:
       - backend
+    volumes:
+      - ./workers/common:/app/common
     restart: on-failure
 
   # ─── Inventory Manager Worker ─────────────────────────────────────
@@ -172,6 +176,8 @@ services:
       - kafka
     networks:
       - backend
+    volumes:
+      - ./workers/common:/app/common
     restart: on-failure
 
   # ─── Fulfillment Worker ───────────────────────────────────────────
@@ -188,6 +194,8 @@ services:
       - kafka
     networks:
       - backend
+    volumes:
+      - ./workers/common:/app/common
     restart: on-failure
 
   # ─── Webhook Dispatcher ───────────────────────────────────────────
@@ -206,6 +214,8 @@ services:
       - redis
     networks:
       - backend
+    volumes:
+      - ./workers/common:/app/common
     restart: on-failure
 
   # ─── Nginx API Gateway ────────────────────────────────────────────
@@ -213,9 +223,10 @@ services:
     image: nginx:alpine
     container_name: orders_nginx
     ports:
-      - "80:80"
+      - "8082:80"
     volumes:
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./frontend:/usr/share/nginx/html
     depends_on:
       - order-api
       - websocket-service
