@@ -6,7 +6,7 @@ from datetime import datetime
 from app.models.order import OrderStatus
 
 
-# ── Sub-schemas ────────────────────────────────────────────────────────────────
+# ── Sub-schemas ───────────────────────────────────────────────────────────────
 
 class OrderItemCreate(BaseModel):
     product_id: str = Field(..., description="Product UUID")

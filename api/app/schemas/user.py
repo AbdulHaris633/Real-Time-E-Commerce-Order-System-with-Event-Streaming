@@ -1,7 +1,6 @@
-# app/schemas/user.py
 from pydantic import BaseModel, EmailStr, Field, UUID4
 from typing import Optional
-from datetime import datetime
+from datetime import datetime    
 
 
 class UserCreate(BaseModel):
