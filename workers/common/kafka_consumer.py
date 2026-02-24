@@ -1,5 +1,5 @@
 # workers/common/kafka_consumer.py
-"""Shared base Kafka consumer for all workers."""
+""" Shared base Kafka consumer for all workers. """
 from confluent_kafka import Consumer, KafkaError, KafkaException
 import json
 import logging
