@@ -41,7 +41,7 @@ async def test_create_order_rate_limit_header():
         "payment_method": "CREDIT_CARD",
     }
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
-        # We expect either 201 (success) or 503 (no DB) — just verify it processes
+        # We  expect  either 201 (success) or 503 (no DB) — just verify it processes
         response = await client.post("/api/v1/orders/", json=order_payload)
         assert response.status_code in (201, 500, 503)
 
