@@ -1,4 +1,4 @@
-# services/websocket/main.py
+# services/ websocket/main.py
 """
 WebSocket Service
 =================
@@ -47,7 +47,7 @@ class ConnectionManager:
     """Manages active WebSocket connections per user."""
 
     def __init__(self):
-        # user_id → {connection_id → websocket}
+        # user_id →  {connection_id → websocket}
         self.connections: Dict[str, Dict[str, WebSocket]] = {}
 
     async def connect(self, user_id: str, websocket: WebSocket) -> str:
