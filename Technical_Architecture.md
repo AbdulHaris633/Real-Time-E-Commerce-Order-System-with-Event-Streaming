@@ -1,4 +1,4 @@
-# TECHNICAL ARCHITECTURE
+#   TECHNICAL ARCHITECTURE
 
 # Real-Time E-Commerce Order System
 ## Complete Architecture, Database Design & File Structure
