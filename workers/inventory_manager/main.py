@@ -2,7 +2,7 @@
 """
 Inventory Manager Worker
 ========================
-Consumes: order_payment_processed, order_cancelled
+Consumes: order payment processed, order cancelled
 Produces: order_fulfilled | order_out_of_stock
 Manages stock levels after payment
 """
